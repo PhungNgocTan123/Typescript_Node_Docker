@@ -6,6 +6,7 @@
   "scripts": {
     "build": "swc ./src -d dist",
     "db:console": "docker compose exec postgres psql -h localhost -U postgres -d webapp_dev",
+    "rebuild:be": "docker compose build backend && docker compose rm --stop backend && docker compose up -d backend",
     "start": "nodemon src/index.ts",
     "dev": "node dist/index.js",
     "start:docker": "npm run build && node --inspect=0.0.0.0 dist/index.js"
@@ -14,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^4.4.0",
     "@tsconfig/node16": "^1.0.3",
     "@types/node": "^18.8.0",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
